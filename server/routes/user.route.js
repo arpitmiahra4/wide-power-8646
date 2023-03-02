@@ -18,6 +18,7 @@ const userRouter = express.Router(); // creating the saperate router for the use
 
 // this is the post API for the signup of new user.
 userRouter.post("/signup", async (req, res) => {
+    console.log("in the signup");
     let { username, email, mobile, password, no_of_wins, no_of_looses, scores } = req.body;
     try {
         bcrypt.hash(password, +salt, async (err, hash) => {
@@ -82,3 +83,13 @@ module.exports = userRouter;
 
 
 
+// {
+//     "username":"rajparmar",
+//     "email" : "rajparmar123@gmail.com",
+//     "mobile" : 1234567890,
+//     "password" : "rajparmar123",
+//     "no_of_wins" : 0,
+//     "no_of_looses" : 0,
+//     "scores" : 0
+    
+//   }
