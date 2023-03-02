@@ -2,6 +2,7 @@ const express = require('express');
 const connectDatabase = require('./config/db');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const userRouter = require('./routes/user.route');
 require('dotenv').config();
 
 const app = express();
@@ -24,6 +25,8 @@ app.use(cors());
 app.get('/', (req, res) => {
     res.send('Homepage!');
   });
+
+app.use("/user" , userRouter);
 
   app.listen(process.env.PORT, async () => {
     try {
