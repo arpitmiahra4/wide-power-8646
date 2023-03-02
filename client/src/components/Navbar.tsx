@@ -86,14 +86,14 @@ const Navbar = () => {
                 <Button w="full" variant="ghost" leftIcon={<AiFillHome size={20} />}>
                   Dashboard
                 </Button>
-                <Button
+                <Link to={"/signup"}><Button
                   w="full"
                   variant="ghost"
                   colorScheme="brand"
                   leftIcon={<BsPlus size={20} />}
                 >
                   Singup
-                </Button>
+                </Button></Link>
                 <Link to={"/login"}><Button
                   w="full"
                   variant="ghost"
@@ -125,14 +125,14 @@ const Navbar = () => {
               <Button variant="ghost" leftIcon={<AiFillHome size={20} />} size="sm">
                 Dashboard
               </Button>
-              <Button
+              <Link to={"/signup"}><Button
                  variant="ghost"
                 colorScheme="brand"
                 leftIcon={<BsPlus size={20} />}
                 size="sm"
               >
                 Singup
-              </Button>
+              </Button></Link>
               <Link to={"/login"}><Button
                 variant="ghost"
                 leftIcon={<BsFillPersonFill size={20} />}

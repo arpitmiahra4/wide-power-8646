@@ -12,6 +12,9 @@ import {
   Text
 } from '@chakra-ui/react';
 
+import { useToast } from '@chakra-ui/react';
+import axios from 'axios';
+
 const Signup = () => {
   return (
     <Stack minH={'100vh'} direction={{ base: 'column', md: 'row' }}>
