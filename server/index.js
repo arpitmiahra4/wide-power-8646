@@ -3,6 +3,7 @@ const connectDatabase = require('./config/db');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const userRouter = require('./routes/user.route');
+const roomRoute=require("./controllers/room.routes")
 require('dotenv').config();
 
 const app = express();
@@ -27,7 +28,7 @@ app.get('/', (req, res) => {
   });
 
 app.use("/user" , userRouter);
-
+app.use("/room" , roomRoute);
   app.listen(process.env.PORT, async () => {
     try {
       await connectDatabase;
