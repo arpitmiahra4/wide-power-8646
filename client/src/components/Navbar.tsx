@@ -36,6 +36,8 @@ const Navbar = () => {
         className={Styles.Navline}
         border="2px solid #44d62c"
         borderRadius={20}
+        position="sticky"
+        top={0}
       >
         <Flex alignItems="center" justifyContent="space-between" mx="auto" >
           <HStack display="flex" spacing={3} alignItems="center">
