@@ -2,7 +2,7 @@ const express = require('express');
 const connectDatabase = require('./config/db');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const userRouter = require('./routes/user.route');
+const userRouter = require('./controllers/user.routes');
 const roomRoute=require("./controllers/room.routes")
 require('dotenv').config();
 
