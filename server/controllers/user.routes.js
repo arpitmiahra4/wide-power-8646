@@ -14,7 +14,15 @@ const salt = process.env.SALT; // imporing the salt value from .env
 
 const userRouter = express.Router(); // creating the saperate router for the user routes.
 
-
+// for getting userData
+userRouter.get('/', async (req, res) => {
+    try {
+      const user = await UserModel.find({ username: req.query.q });
+      res.status(200).send({ message: 'User Data Found!', user });
+    } catch (err) {
+      res.status(500).send({ message: 'Internal Server Error' });
+    }
+  });
 
 // this is the post API for the signup of new user.
 userRouter.post("/signup", async (req, res) => {

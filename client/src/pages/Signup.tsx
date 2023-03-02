@@ -14,9 +14,8 @@ import {
   FormHelperText,
   InputRightElement,
 } from '@chakra-ui/react';
-
 import { useToast } from '@chakra-ui/react';
-// import axios from 'axios';
+import axios from 'axios';
 import { SignupProps, UserDetails } from '../constants/constants';
 import { useDispatch } from 'react-redux';
 import { registerUser } from '../store/Auth/auth.actions';
@@ -158,18 +157,18 @@ export default function Signup() {
     const name = e.target.name;
     let value = e.target.value;
 
-    // if (name === 'username') {
-    //   axios
-    //     .get(`http://localhost:8080/users?q=${value}`)
-    //     .then((res) => {
-    //       if (res.data.users.length > 0) {
-    //         setExistingUsername(true);
-    //       } else {
-    //         setExistingUsername(false);
-    //       }
-    //     })
-    //     .catch((err) => console.log(err));
-    // }
+    if (name === 'username') {
+      axios
+        .get(`http://localhost:8080/user?q=${value}`)
+        .then((res) => {
+          if (res.data.users.length > 0) {
+            setExistingUsername(true);
+          } else {
+            setExistingUsername(false);
+          }
+        })
+        .catch((err) => console.log(err));
+    }
 
     // if (name === 'skills') {
     //   value = value.split(',');
