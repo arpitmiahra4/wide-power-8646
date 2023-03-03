@@ -14,6 +14,14 @@ import {
   Avatar,
   Image,
   ModalOverlay,
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalCloseButton,
+  ModalBody,
+  Text,
+  ModalFooter,
+  Img,
 } from "@chakra-ui/react";
 import Styles from "../styles/Navbar.module.css";
 import { AiOutlineMenu, AiFillHome, AiFillBell } from "react-icons/ai";
@@ -23,6 +31,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Dispatch, useEffect } from "react";
 import { getUserDetails } from "../store/Auth/auth.actions";
 import { State } from "../constants/constants";
+import rules from "../assets/Game_rules.png"
 
 const Navbar = () => {
   const { userDetails, username } = useSelector((store: State) => store.auth);
@@ -35,16 +44,8 @@ const Navbar = () => {
   const bg = useColorModeValue("white", "gray.800");
   const mobileNav = useDisclosure();
 
-  const OverlayOne = () => (
-    <ModalOverlay
-      bg="blackAlpha.300"
-      backdropFilter="blur(10px) hue-rotate(90deg)"
-    />
-  );
 
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [overlay, setOverlay] = React.useState(<OverlayOne />);
-
   return (
     <React.Fragment>
       <chakra.header
@@ -114,13 +115,10 @@ const Navbar = () => {
                   Dashboard
                 </Button>
                 <Button
-                onClick={() => {
-                  setOverlay(<OverlayOne />);
-                  onOpen();
-                }}
-              >
-                Rules Book
-              </Button>
+                 onClick={onOpen}
+                >
+                  Rules Book
+                </Button>
                 <Link to={"/login"}>
                   <Button
                     w="full"
@@ -159,14 +157,25 @@ const Navbar = () => {
                 Dashboard
               </Button>
               <Button
-                onClick={() => {
-                  setOverlay(<OverlayOne />);
-                  onOpen();
-                }}
+                onClick={onOpen}
                 colorScheme="teal"
               >
                 Rules Book
               </Button>
+              {/* MOdal */}
+              <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent  border="2px solid #44d62c" borderRadius={20}>
+          <ModalCloseButton />
+          <ModalBody>
+          </ModalBody>
+          <Img src={rules} borderRadius={20}/>
+          <ModalFooter>
+            <Button bg={"black"} fontSize={22} color='red' mr={3} border="3px solid #44d62c" onClick={onClose}>Close</Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+
               <Link to={"/login"}>
                 <Button
                   variant="ghost"
