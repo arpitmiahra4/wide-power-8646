@@ -208,7 +208,7 @@ export default function Signup() {
           mb="5%"
           mx="5%"
           isAnimated
-          colorScheme={'purple'}
+          colorScheme={'yellow'}
         ></Progress>
         {step === 1 ? (
           <Form1
