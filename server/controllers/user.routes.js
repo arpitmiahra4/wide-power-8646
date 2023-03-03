@@ -98,5 +98,4 @@ module.exports = userRouter;
 //     "no_of_wins" : 0,
 //     "no_of_looses" : 0,
 //     "scores" : 0
-    
 //   }

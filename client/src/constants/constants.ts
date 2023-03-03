@@ -8,6 +8,16 @@ export interface UserDetails {
   scores: Number;
 }
 
+export interface PlayerDetails {
+  username: string;
+  email: string;
+  password: string;
+  mobile: Number;
+  no_of_wins: Number;
+  no_of_looses: Number;
+  scores: number;
+}
+
 export type UserCredentials = {
   email: string;
   password: string;
