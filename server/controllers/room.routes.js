@@ -18,9 +18,7 @@ roomRoute.get("/", async (req, res) => {
 });
 const makequestion=(word)=>{
 let arr=word.trim().split(" ")
-
-
-
+return arr
 }
 
 
