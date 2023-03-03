@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import {
   Button,
   Flex,
@@ -12,16 +12,17 @@ import {
   VStack,
   CloseButton,
   Avatar,
-  Image
-} from '@chakra-ui/react';
-import Styles from '../styles/Navbar.module.css'
-import { AiOutlineMenu , AiFillHome  , AiFillBell  } from "react-icons/ai";
+  Image,
+  ModalOverlay,
+} from "@chakra-ui/react";
+import Styles from "../styles/Navbar.module.css";
+import { AiOutlineMenu, AiFillHome, AiFillBell } from "react-icons/ai";
 import { BsFillPersonFill } from "react-icons/bs";
-import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { Dispatch, useEffect } from 'react';
-import { getUserDetails } from '../store/Auth/auth.actions';
-import { State } from '../constants/constants';
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Dispatch, useEffect } from "react";
+import { getUserDetails } from "../store/Auth/auth.actions";
+import { State } from "../constants/constants";
 
 const Navbar = () => {
   const { userDetails, username } = useSelector((store: State) => store.auth);
@@ -33,6 +34,17 @@ const Navbar = () => {
   }, []);
   const bg = useColorModeValue("white", "gray.800");
   const mobileNav = useDisclosure();
+
+  const OverlayOne = () => (
+    <ModalOverlay
+      bg="blackAlpha.300"
+      backdropFilter="blur(10px) hue-rotate(90deg)"
+    />
+  );
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [overlay, setOverlay] = React.useState(<OverlayOne />);
+
   return (
     <React.Fragment>
       <chakra.header
@@ -50,7 +62,7 @@ const Navbar = () => {
         position="sticky"
         top={0}
       >
-        <Flex alignItems="center" justifyContent="space-between" mx="auto" >
+        <Flex alignItems="center" justifyContent="space-between" mx="auto">
           <HStack display="flex" spacing={3} alignItems="center">
             <Box
               display={{
@@ -94,16 +106,29 @@ const Navbar = () => {
                   justifySelf="self-start"
                   onClick={mobileNav.onClose}
                 />
-                <Button w="full" variant="ghost" leftIcon={<AiFillHome size={20} />}>
-                  Dashboard
-                </Button>
-                <Link to={"/login"}><Button
+                <Button
                   w="full"
                   variant="ghost"
-                  leftIcon={<BsFillPersonFill size={20} />}
+                  leftIcon={<AiFillHome size={20} />}
                 >
-                  Login
+                  Dashboard
                 </Button>
+                <Button
+                onClick={() => {
+                  setOverlay(<OverlayOne />);
+                  onOpen();
+                }}
+              >
+                Rules Book
+              </Button>
+                <Link to={"/login"}>
+                  <Button
+                    w="full"
+                    variant="ghost"
+                    leftIcon={<BsFillPersonFill size={20} />}
+                  >
+                    Login
+                  </Button>
                 </Link>
               </VStack>
             </Box>
@@ -113,8 +138,10 @@ const Navbar = () => {
               display="flex"
               alignItems="center"
             >
-             
-              <Image src="https://i.ibb.co/SvM6jjQ/clip-art-word-search-word-game-vector-graphics-puzzle-2016-png-favpng-q-Xpjv0dhr8-Hq5j0-RFx-F0m-HDWx.png" w={20} />
+              <Image
+                src="https://i.ibb.co/SvM6jjQ/clip-art-word-search-word-game-vector-graphics-puzzle-2016-png-favpng-q-Xpjv0dhr8-Hq5j0-RFx-F0m-HDWx.png"
+                w={20}
+              />
             </chakra.a>
 
             <HStack
@@ -123,18 +150,32 @@ const Navbar = () => {
                 base: "none",
                 md: "inline-flex",
               }}
-
             >
-              <Button variant="ghost" leftIcon={<AiFillHome size={20} />} size="sm">
-                Dashboard
-              </Button>
-              <Link to={"/login"}><Button
+              <Button
                 variant="ghost"
-                leftIcon={<BsFillPersonFill size={20} />}
+                leftIcon={<AiFillHome size={20} />}
                 size="sm"
               >
-                Login
-              </Button></Link>
+                Dashboard
+              </Button>
+              <Button
+                onClick={() => {
+                  setOverlay(<OverlayOne />);
+                  onOpen();
+                }}
+                colorScheme="teal"
+              >
+                Rules Book
+              </Button>
+              <Link to={"/login"}>
+                <Button
+                  variant="ghost"
+                  leftIcon={<BsFillPersonFill size={20} />}
+                  size="sm"
+                >
+                  Login
+                </Button>
+              </Link>
             </HStack>
           </HStack>
           <HStack
@@ -164,12 +205,14 @@ const Navbar = () => {
                 <Avatar
                   size="sm"
                   name={userDetails?.username}
-                  src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSqlpqZbGYN2V3TeJRArh052k-VdC7ABhKDBgduBMoLt9UHwtZ17hMjBBTP8VXw3CV7Xc&usqp=CAU"}
+                  src={
+                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSqlpqZbGYN2V3TeJRArh052k-VdC7ABhKDBgduBMoLt9UHwtZ17hMjBBTP8VXw3CV7Xc&usqp=CAU"
+                  }
                 />
               </Link>
             ) : (
-              <Button bgColor={'red.400'} color="black">
-                <Link to={'/signup'}>Register</Link>
+              <Button bgColor={"red.400"} color="black">
+                <Link to={"/signup"}>Register</Link>
               </Button>
             )}
           </HStack>
@@ -177,7 +220,6 @@ const Navbar = () => {
       </chakra.header>
     </React.Fragment>
   );
+};
 
-}
-
-export default Navbar
+export default Navbar;

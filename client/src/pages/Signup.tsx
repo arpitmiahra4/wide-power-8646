@@ -19,7 +19,7 @@ import axios from 'axios';
 import { SignupProps, UserDetails } from '../constants/constants';
 import { useDispatch } from 'react-redux';
 import { registerUser } from '../store/Auth/auth.actions';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Form1 = ({
   userDetails,
@@ -139,6 +139,7 @@ export default function Signup() {
   const toast = useToast();
   const [step, setStep] = useState(1);
   const [progress, setProgress] = useState(33.33);
+  const navigate = useNavigate();
   const [userDetails, setUserDetails] = useState<UserDetails>({
     username: "",
     email: "",
@@ -187,6 +188,7 @@ export default function Signup() {
       duration: 3000,
       isClosable: true,
     });
+    navigate('/login')
   };
 
   return (
