@@ -47,5 +47,5 @@ level2Router.patch("/update/:id "  , async (req ,res) => {
 
 
 
-// exporting the userRouter.
+// exporting the level2Router.
 module.exports = level2Router;
