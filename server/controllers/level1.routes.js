@@ -3,7 +3,7 @@ const express = require("express"); //importing the express from package.
 require('dotenv').config(); // importing the dotenv from package.
 
 
-const Level1Model = require("../models/level1.model"); // importing UserModel from models folder.
+const Level1Model = require("../models/level1.model"); // importing level1Model from models folder.
 
 
 const level1Router = express.Router(); // creating the saperate router for the user routes.
