@@ -45,3 +45,6 @@ export type SignupProps = {
   existingUsername?: boolean;
   handleOnChange: (e: any) => void;
 };
+export type State = {
+  auth: AuthInitialState;
+};

@@ -16,10 +16,21 @@ import {
 } from '@chakra-ui/react';
 import Styles from '../styles/Navbar.module.css'
 import { AiOutlineMenu , AiFillHome  , AiFillBell  } from "react-icons/ai";
-import { BsPlus , BsFillPersonFill } from "react-icons/bs";
+import { BsFillPersonFill } from "react-icons/bs";
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Dispatch, useEffect } from 'react';
+import { getUserDetails } from '../store/Auth/auth.actions';
+import { State } from '../constants/constants';
 
 const Navbar = () => {
+  const { userDetails, username } = useSelector((store: State) => store.auth);
+  const dispatch: Dispatch<any> = useDispatch();
+  useEffect(() => {
+    if (!userDetails) {
+      dispatch(getUserDetails(username));
+    }
+  }, []);
   const bg = useColorModeValue("white", "gray.800");
   const mobileNav = useDisclosure();
   return (
@@ -86,14 +97,6 @@ const Navbar = () => {
                 <Button w="full" variant="ghost" leftIcon={<AiFillHome size={20} />}>
                   Dashboard
                 </Button>
-                <Link to={"/signup"}><Button
-                  w="full"
-                  variant="ghost"
-                  colorScheme="brand"
-                  leftIcon={<BsPlus size={20} />}
-                >
-                  Singup
-                </Button></Link>
                 <Link to={"/login"}><Button
                   w="full"
                   variant="ghost"
@@ -125,14 +128,6 @@ const Navbar = () => {
               <Button variant="ghost" leftIcon={<AiFillHome size={20} />} size="sm">
                 Dashboard
               </Button>
-              <Link to={"/signup"}><Button
-                 variant="ghost"
-                colorScheme="brand"
-                leftIcon={<BsPlus size={20} />}
-                size="sm"
-              >
-                Singup
-              </Button></Link>
               <Link to={"/login"}><Button
                 variant="ghost"
                 leftIcon={<BsFillPersonFill size={20} />}
@@ -164,12 +159,19 @@ const Navbar = () => {
               <AiFillBell />
               <VisuallyHidden>Notifications</VisuallyHidden>
             </chakra.a>
-
-            <Avatar
-              size="sm"
-              name="Arpit Mishra"
-              src="https://bit.ly/dan-abramov"
-            />
+            {userDetails ? (
+              <Link to={`/user/${userDetails?.username}`}>
+                <Avatar
+                  size="sm"
+                  name={userDetails?.username}
+                  src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSqlpqZbGYN2V3TeJRArh052k-VdC7ABhKDBgduBMoLt9UHwtZ17hMjBBTP8VXw3CV7Xc&usqp=CAU"}
+                />
+              </Link>
+            ) : (
+              <Button bgColor={'red.400'} color="black">
+                <Link to={'/signup'}>Register</Link>
+              </Button>
+            )}
           </HStack>
         </Flex>
       </chakra.header>

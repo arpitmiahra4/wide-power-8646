@@ -31,6 +31,20 @@ export const reducer = (
           case types.LOGIN_USER_FAILURE: {
             return { ...state, isError: true, isLoading: false };
           }
+          case types.GET_USER_DETAILS_LOADING: {
+            return { ...state, isLoading: true };
+          }
+          case types.GET_USER_DETAILS_SUCCESS: {
+            return {
+              ...state,
+              isLoading: false,
+              userDetails: payload?.users[0],
+              username: payload?.users[0].username,
+            };
+          }
+          case types.GET_USER_DETAILS_FAILURE: {
+            return { ...state, isLoading: false, isError: true };
+          }
           default:
       return state;
     }
