@@ -17,8 +17,28 @@ roomRoute.get("/", async (req, res) => {
   res.send(data);
 });
 const makequestion=(word)=>{
-let arr=word.trim().split(" ")
-return arr
+  let arr = word.trim().split("");
+  let n = Math.floor(arr.length/2);
+  const arr2 = new Array(n);
+  for (let i = 0; i < arr2.length; i++) {
+    let x=Math.floor(Math.random() * arr.length)
+    if(arr2.includes(x)){
+        i--;
+        continue;
+    }
+    arr2[i] =x ;
+  }
+  console.log(arr2)
+  let bag=""
+  for (let i = 0; i < arr.length; i++) {
+    if(arr2.includes(i)){
+        bag+="_"
+    }
+    else{
+        bag+=arr[i]
+    }
+  }
+  return bag;
 }
 
 
@@ -40,10 +60,10 @@ roomRoute.post("/create", async (req, res) => {
    winer: {},
    game_over: false,
    created_at: new Date(),
-   level1:l1[0],
-   level2:l2[0],
-   level3:l3[0],
-   level4:l4[0]
+   level1:{...l1[0],question:l1q},
+   level2:{...l2[0],question:l2q},
+   level3:{...l3[0],question:l3q},
+   level4:{...l4[0],question:l4q}
  });
  await newroom.save();
  res.send({ msg: "New Room Created", roomid: newroom.roomid ,newroom});
