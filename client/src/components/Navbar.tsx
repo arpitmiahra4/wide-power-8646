@@ -119,15 +119,6 @@ const Navbar = () => {
                 >
                   Rules Book
                 </Button>
-                <Link to={"/login"}>
-                  <Button
-                    w="full"
-                    variant="ghost"
-                    leftIcon={<BsFillPersonFill size={20} />}
-                  >
-                    Login
-                  </Button>
-                </Link>
               </VStack>
             </Box>
             <chakra.a
@@ -175,16 +166,6 @@ const Navbar = () => {
           </ModalFooter>
         </ModalContent>
       </Modal>
-
-              <Link to={"/login"}>
-                <Button
-                  variant="ghost"
-                  leftIcon={<BsFillPersonFill size={20} />}
-                  size="sm"
-                >
-                  Login
-                </Button>
-              </Link>
             </HStack>
           </HStack>
           <HStack
