@@ -14,7 +14,15 @@ const salt = process.env.SALT; // imporing the salt value from .env
 
 const userRouter = express.Router(); // creating the saperate router for the user routes.
 
-
+// for getting userData
+userRouter.get('/', async (req, res) => {
+    try {
+      const user = await UserModel.find({ username: req.query.q });
+      res.status(200).send({ message: 'User Data Found!', user });
+    } catch (err) {
+      res.status(500).send({ message: 'Internal Server Error' });
+    }
+  });
 
 // this is the post API for the signup of new user.
 userRouter.post("/signup", async (req, res) => {
@@ -42,27 +50,26 @@ userRouter.post("/signup", async (req, res) => {
 
 // this is post API for the login of the user.
 userRouter.post("/login", async (req, res) => {
-    const { username, password } = req.body;
-
-    try {
-        const user = await UserModel.find({ username });
-        const token = jwt.sign({ username: username }, key);
-        if (user.length > 0) {
-            bcrypt.compare(password, user[0].password, (err, result) => {
-                if (err) {
-                    res.status(400).send("error in the bcrypt try part and error is :- ", err);
-                } else if (result) {
-                    res.status(200).send({ message: "You have successfully logged in...", token: token });
-                } else {
-                    res.status(400).send({ message: "wrong credentials, please try again with right one..." });
-                }
-            });
-        } else {
-            res.status(400).send({ message: "wrong credentials, please try again with right one..." });
-        }
-    } catch (error) {
-        res.status(400).send("error in the bcrypt catch part and error is :- ", error);
-    }
+    const { email, password } = req.body;
+    const user = await UserModel.findOne({ email });
+  
+    if (!user) res.status(404).send({ message: 'No such user found!' });
+    const hash = user.password;
+    bcrypt.compare(password, hash, async function (err, result) {
+      if (result) {
+        const token = jwt.sign(
+          { email: user.email, userId: user._id },
+          process.env.KEY
+        );
+        return res
+          .status(200)
+          .send({ message: 'Login Successfull', token, user });
+      } else {
+        res
+          .status(401)
+          .send({ message: 'Unauthorised Access, Please try again.' });
+      }
+    });
 
 });
 
