@@ -54,7 +54,6 @@ const GameOver = () => {
 
         const id = setInterval(()=>{
             setDisplay((prev)=>!prev);
-            console.log("TRUE");
         },500)
 
         return ()=>{

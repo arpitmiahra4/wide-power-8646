@@ -67,3 +67,27 @@ export const startRandomGame = (userid: string, username : string) => async (dis
         dispatch({type : GET_ROOM_ERROR});
     }
 }
+
+export const gameStart = (roomid  :string)=>async (dispatch : useAppDispatch)=>{
+    try{
+        dispatch({type : GET_ROOM_LOADING});
+        const res = await axios.patch(`${process.env['BASE_URL']}/room/gamestart/${roomid}`);
+        dispatch(getRoomDetails(roomid));
+    }
+    catch(err){
+        dispatch({type : GET_ROOM_ERROR});
+    }
+}
+
+export const gameOver = (roomid  :string)=>async (dispatch : useAppDispatch) =>{
+    try{
+        dispatch({type : GET_ROOM_LOADING})
+        const res = await axios.patch(`${process.env['BASE_URL']}/room/gameover/${roomid}`);
+        const {leaderboard} = res.data;
+        dispatch(getRoomDetails(roomid));
+        return leaderboard;
+    }
+    catch(err){
+        dispatch({type : GET_ROOM_ERROR});
+    }
+}
