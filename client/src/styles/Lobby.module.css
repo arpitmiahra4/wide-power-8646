@@ -1,0 +1,35 @@
+.gridBox{
+    padding: 30px;
+    width: 70%;
+}
+.gridItem{
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 100%;
+    background-color: rgb(88, 85, 85);
+    padding: 5%;
+}
+
+.userImage{
+    border-radius: 50%;
+    height: 50%;
+    width: 20%;
+    border: 2px solid white;
+    cursor: pointer;
+}
+.mainStack{
+    height: 100%;
+    justify-content: center;
+}
+.text{
+    color : white;
+    font-size: 20px;
+    cursor: pointer;
+}
+.spinnerBox{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
