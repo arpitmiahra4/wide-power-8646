@@ -122,7 +122,7 @@ const Navbar = () => {
               </VStack>
             </Box>
             <chakra.a
-              href="/"
+              href="/home"
               title="Choc Home Page"
               display="flex"
               alignItems="center"

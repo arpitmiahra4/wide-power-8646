@@ -14,7 +14,7 @@ export const registerUser =
   (dispatch: ({ type, payload }: ReducerProps) => void): boolean => {
     dispatch({ type: types.REGISTER_USER_LOADING });
     axios
-      .post('http://localhost:8080/user/signup', userDetails)
+      .post(`${process.env.REACT_APP_BASE_URL}/user/signup`, userDetails)
       .then((res) => {
         console.log(res);
         dispatch({ type: types.REGISTER_USER_SUCCESS, payload: res.data });
@@ -31,7 +31,7 @@ export const registerUser =
   (dispatch: ({ type, payload }: AuthReducer) => Dispatch) => {
     dispatch({ type: types.LOGIN_USER_LOADING });
     return axios
-      .post('http://localhost:8080/user/login', userCreds)
+      .post(`${process.env.REACT_APP_BASE_URL}/user/login`, userCreds)
       .then((res) => {
         dispatch({ type: types.LOGIN_USER_SUCCESS, payload: res.data });
         setItem('token', res.data.token);
@@ -49,7 +49,7 @@ export const registerUser =
   (dispatch: ({ type, payload }: ReducerProps) => Dispatch) => {
     dispatch({ type: types.GET_USER_DETAILS_LOADING });
     return axios
-      .get(`http://localhost:8080/user?q=${username}`)
+      .get(`${process.env.REACT_APP_BASE_URL}/user?q=${username}`)
       .then((res) => {
         dispatch({
           type: types.GET_USER_DETAILS_SUCCESS,

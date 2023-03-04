@@ -160,7 +160,7 @@ export default function Signup() {
 
     if (name === 'username') {
       axios
-        .get(`http://localhost:8080/user?q=${value}`)
+        .get(`${process.env.REACT_APP_BASE_URL}/user?q=${value}`)
         .then((res) => {
           if (res.data.users.length > 0) {
             setExistingUsername(true);
