@@ -190,7 +190,7 @@ const Navbar = () => {
               <AiFillBell />
               <VisuallyHidden>Notifications</VisuallyHidden>
             </chakra.a>
-            {userDetails ? (
+            {username ? (
               <Link to={`/user/${userDetails?.username}`}>
                 <Avatar
                   size="sm"
