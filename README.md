@@ -66,7 +66,7 @@ If you want to contact Our Team, you can reach us through below handles.
 [![linkedin](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](http://www.linkedin.com/in/harshal-apsunde-42b40b236)
 
 ## Snehil Agrahari
-[![linkedin](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/snehil-agrahari-/)
+[![linkedin](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](http://www.linkedin.com/in/snehil-agrahari-996867241)
 
 
 
