@@ -182,7 +182,7 @@ roomRoute.patch("/gameover/:roomid", async (req, res) => {
     let players = match.players;
     players.sort((a,b)=>b.score-a.score);
     const winner = players[0];
-    await findOneAndUpdate({roomid},{winner : {user_id : winner.user_id, winning_score : winner.score}});
+    await RoomsModel.findOneAndUpdate({roomid},{winner : {user_id : winner.user_id, winning_score : winner.score}});
     res.send({ msg: "Room Updated with winer and Game Over...", leaderboard : players });
   } catch (error) {
     console.log(error);
