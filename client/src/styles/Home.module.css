@@ -7,3 +7,14 @@
     justify-content: center;
     align-items: center;
 }
+.ccc{
+    animation: up-down 2s ease-in-out infinite alternate-reverse both;
+}
+@keyframes up-down {
+    0% {
+      transform: translateY(20px);
+    }
+    100% {
+      transform: translateY(-10px);
+    }
+  }
