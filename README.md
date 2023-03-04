@@ -18,9 +18,7 @@ Full-Stack Word Game with Admin Dashboard Where users can compete with each othe
 
 **Deployed On:**
 
-## Vercel
 
-**Image Management:** [Cloudinary](https://cloudinary.com/)
 
 ## 🚀 Features
 - Login/Signup User Account
@@ -31,24 +29,18 @@ Full-Stack Word Game with Admin Dashboard Where users can compete with each othe
 - Can show clue
 - Comparing users by score
 - And also compare users via time
-- Admin: List of all users
-- Admin: List of all users score till now.
-- Admin: List of top leaders
-- Admin: Can delete users.
-- Admin: Can update users.
-- Admin: Can add , update , delete words for the game.
 
-## Wanna Look of Admin Dashboard And UI 🙈 :
-![Capture](https://i.ibb.co/kgF231Z/Screenshot-20230122-164229.png)
+
+
 
 <table>
   <tr>
-    <td><img src="https://i.ibb.co/0fYPt1v/Screenshot-20230122-164245.png" alt="mockup" /></td>
-    <td><img src="https://i.ibb.co/2hJvDVd/Screenshot-20230122-164254.png" alt="mockups" /></td>
+    <td><img src="" alt="mockup" /></td>
+    <td><img src="" alt="mockups" /></td>
   </tr>
   <tr>
-    <td><img src="https://i.ibb.co/7bfBYSg/Screenshot-20230122-164109.png" alt="mockup" /></td>
-    <td><img src="https://i.ibb.co/M1BKw7c/Screenshot-20230122-164131.png" alt="mockups" /></td>
+    <td><img src="" alt="mockup" /></td>
+    <td><img src="" alt="mockups" /></td>
   </tr>
 </table>
 
