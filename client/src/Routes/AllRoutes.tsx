@@ -19,12 +19,9 @@ const AllRoutes = () => {
         <Route path="/lobby" element={<Lobby />} />
         <Route path="/round1" element={<Round1 />} />
         <Route path="/round2" element={<Round2 />} />
-<<<<<<< HEAD
-=======
         <Route path="/round3" element={<Round3 />} />
         <Route path="/round4" element={<Round4 />} />
         <Route path="/gameover" element={<GameOver />} />
->>>>>>> 3233bcbdaadb41d7ecb19847a7f84736d82380cd
     </Routes>
   )
 }
