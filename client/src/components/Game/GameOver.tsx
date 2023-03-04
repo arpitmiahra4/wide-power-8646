@@ -9,14 +9,14 @@ const GameOver = () => {
     const [leaderboard, setLeaderboard] = useState<playerType[]>([
         {
             "user_id": "6400eb96d3055713ed2fb197",
-            "username": "mishrajii",
-            "score": 0,
+            "username": "snehil",
+            "score": 10,
             "_id": "6401bfa8c776dfeca3722487"
           },
           {
             "user_id": "6400eb96d3055713ed2fb197",
             "username": "mishrajii",
-            "score": 0,
+            "score": 20,
             "_id": "6402fc42c093c701a2fd1599"
           },
           {
@@ -27,8 +27,8 @@ const GameOver = () => {
           },
           {
             "user_id": "6400c57a0213fd7aef75734b",
-            "username": "rajparmar",
-            "score": 0,
+            "username": "harshal",
+            "score": 30,
             "_id": "640300784f23b1875a45f9c5"
           }
     ]);
@@ -46,7 +46,7 @@ const GameOver = () => {
                 else
                 {
                     clearInterval(counterRef.current);
-                    nav('/login');
+                    nav('/home');
                     return 0;
                 }
             })
