@@ -1,13 +1,13 @@
 .gridBox{
     padding: 30px;
-    background-color: black;
+    width: 70%;
 }
 .gridItem{
     border: 1px solid black;
     border-radius: 10px;
-    height: 40vh;
-    width: 46vw;
+    width: 100%;
     background-color: rgb(88, 85, 85);
+    padding: 5%;
 }
 
 .userImage{
