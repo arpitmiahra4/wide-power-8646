@@ -15,7 +15,7 @@ import {
 } from "@chakra-ui/react";
 import { loginUser } from "../store/Auth/auth.actions";
 import { useNavigate } from "react-router-dom";
-
+import {Navigate} from 'react-router-dom'
 type Creds = {
   email: string;
   password: string;
@@ -67,6 +67,11 @@ const Login = () => {
       });
     }
   };
+
+
+  if(localStorage.getItem("token"))
+    return <Navigate to="/home" />
+
   return (
     <Stack minH={"100vh"} direction={{ base: "column", md: "row" }}>
       <Flex p={8} flex={1} align={"center"} justify={"center"}>

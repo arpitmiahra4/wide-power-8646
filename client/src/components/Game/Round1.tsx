@@ -43,6 +43,24 @@ const Round1 = () => {
   const [submit,setSubmit] = useState<boolean>(false);
   const [exit, setExit] = useState<boolean>(false);
 
+  const [score,setScore] = useState<number>(50);
+  const handleDecrement = ()=>{
+    setScore(score-20);
+  }
+
+  const handleSubmit = () =>{
+    setSubmit(true);
+  }
+  const handleClue1Click = ()=>{
+    handleDecrement();
+    setClue1(true);
+  }
+  
+  const handleClue2Click = () =>{
+    handleDecrement();
+    setClue2(true);
+  }
+
   
   const handleGameTimer = useCallback(
     () => {
@@ -80,15 +98,17 @@ const Round1 = () => {
 
 },[handleGameTimer]);
 
-const handleSubmit = () =>{
-  setSubmit(true);
-}
 
+const nav = useNavigate();
 const handleExit = ()=>{
   setExit(true);
-  // setTimeout(()=>{
-  //     nav('')
-  // },2000)
+  if(counterRef.current)
+    clearInterval(counterRef.current);
+  if(counterRef2.current)
+    clearInterval(counterRef2.current);
+  setTimeout(()=>{
+      nav('/home')
+  },2000)
 }
 
   if(roundEnd)
@@ -137,7 +157,7 @@ const handleExit = ()=>{
             <Text fontSize="2xl" fontFamily="Silkscreen, cursive" color={count2>5?"green":"red"}>TIME REMAINING : 00:{count2<10?`0${count2}`:count2}</Text>
             <Text fontSize="2xl" fontFamily="Silkscreen, cursive" color="white">ROUND-1</Text>
             <Text fontSize="2xl" fontFamily="Silkscreen, cursive" color="red.500">
-              Current Score : <Text as="span">{50}</Text>
+              Current Score : <Text as="span">{score}</Text>
             </Text>
           </HStack>
           <VStack gap={2} mt={5} w="full">
@@ -145,12 +165,12 @@ const handleExit = ()=>{
             <Heading size="md" color="green.600">HINT : {word.hint}</Heading>
             <Box borderBottom="1px solid green" borderTop="1px solid green" p="10px 20px" w="full">
             {
-              clue1?<Heading color="green.600" size="md">CLUE-1 : {word.clue1}</Heading>:<Button variant="ghost" colorScheme={'green'} onClick={()=>setClue1(true)}>Show clue</Button>
+              clue1?<Heading color="green.600" size="md">CLUE-1 : {word.clue1}</Heading>:<Button variant="ghost" colorScheme={'green'} onClick={handleClue1Click}>Show clue</Button>
             }
             </Box>
             <Box borderBottom="1px solid green" borderTop="1px solid green" p="10px 20px" w="full">
             {
-              clue2?<Heading color="green.600" size="md">CLUE-2 : {word.clue2}</Heading>:<Button colorScheme={'green'} variant="ghost" onClick={()=>setClue2(true)}>Show clue</Button>
+              clue2?<Heading color="green.600" size="md">CLUE-2 : {word.clue2}</Heading>:<Button colorScheme={'green'} variant="ghost" onClick={handleClue2Click}>Show clue</Button>
             }
             </Box>
           </VStack>

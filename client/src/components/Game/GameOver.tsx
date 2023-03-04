@@ -9,25 +9,25 @@ const GameOver = () => {
     const [leaderboard, setLeaderboard] = useState<playerType[]>([
         {
             "user_id": "6400eb96d3055713ed2fb197",
-            "username": "snehil",
-            "score": 10,
+            "username": "YOU",
+            "score": 80,
             "_id": "6401bfa8c776dfeca3722487"
           },
           {
             "user_id": "6400eb96d3055713ed2fb197",
-            "username": "mishrajii",
-            "score": 20,
+            "username": "HARSHAL",
+            "score": 60,
             "_id": "6402fc42c093c701a2fd1599"
           },
           {
             "user_id": "6400c57a0213fd7aef75734b",
-            "username": "rajparmar",
-            "score": 50,
+            "username": "SNEHIL",
+            "score": 40,
             "_id": "6402fc8dc093c701a2fd15a6"
           },
           {
             "user_id": "6400c57a0213fd7aef75734b",
-            "username": "harshal",
+            "username": "RAJ PARMAR",
             "score": 30,
             "_id": "640300784f23b1875a45f9c5"
           }
