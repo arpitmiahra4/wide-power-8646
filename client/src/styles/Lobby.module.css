@@ -23,8 +23,9 @@
 }
 .text{
     color : white;
-    font-size: 20px;
+    font-size: 25px;
     cursor: pointer;
+    font-family: Silkscreen , cursive;
 }
 .spinnerBox{
     height: 100%;
@@ -32,4 +33,9 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
+}
+.flexInsideModal{
+    justify-content: center;
+    align-items: center;
+    height: 150px;
 }
