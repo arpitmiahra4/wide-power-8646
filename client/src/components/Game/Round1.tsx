@@ -119,13 +119,13 @@ const handleExit = ()=>{
       <Button onClick={handleExit} colorScheme="blue" variant="solid" position="absolute" bottom={4} right="20px"> <BiExit fontSize="20px" /> Exit</Button>
       <Flex direction={{base : 'row', sm: 'row', md : "column" }} justifyContent="center" alignItems="center" flex={2} gap={6}>
         {
-          players.map((el)=>{
+          players.map((el,i)=>{
             return (
-              <Flex gap={2} alignItems="center">
-                <Circle p={1} border="2px solid red">
-                  <Text fontWeight="bold" >R</Text>
+              <Flex gap={2} w="full" alignItems="center" borderBottom="1px solid skyblue" p={"0px 20px"}>
+                <Circle p={"5px 13px"} border="2px solid red">
+                  <Text fontWeight="bold" color={'red.400'}>{i+1}</Text>
                 </Circle>
-                <Text fontWeight="bold" fontSize="lg" color="blue.500">{el}</Text>
+                <Text fontWeight="bold" fontSize="lg" color="blue.500">{el.toUpperCase()}</Text>
               </Flex>
             )
           })

@@ -20,7 +20,7 @@ interface wordType{
 
 
 
-const Round2 = () => {
+const Round3 = () => {
 
   const [count, setCount] = useState<number>(5)
   const [count2,setCount2] = useState<number>(30)
@@ -56,7 +56,7 @@ const Round2 = () => {
             clearInterval(counterRef2.current);
             setRoundEnd(true);
             setTimeout(()=>{
-              navigate('/round3');
+              navigate('/round4');
             },3000)
             return 0;
           }
@@ -115,7 +115,7 @@ const handleExit = ()=>{
 
   return loading?(
     <Center minH="80vh">
-        <Heading color="white" size="xl" fontFamily="Silkscreen, cursive">Round-2 Starts in {count}</Heading>
+        <Heading color="white" size="xl" fontFamily="Silkscreen, cursive">Round-3 Starts in {count}</Heading>
     </Center>
   ):(
     <Flex justifyContent="start" w="full" minH="80vh" bg="blackAlpha.700" direction={{base : 'column', sm : 'column', md : 'row'}}>
@@ -140,6 +140,7 @@ const handleExit = ()=>{
         <VStack w="full" border="2px solid white" p={2} h="full" justifyContent={'space-between'}>
           <HStack w="full" justifyContent="space-between">
             <Text fontSize="2xl" fontFamily="Silkscreen, cursive" color={count2>5?"green":"red"}>TIME REMAINING : 00:{count2<10?`0${count2}`:count2}</Text>
+            <Text fontSize="2xl" fontFamily="Silkscreen, cursive" color="white">ROUND - 3</Text>
             <Text fontSize="2xl" fontFamily="Silkscreen, cursive" color="red.500">
               Current Score : <Text as="span">{50}</Text>
             </Text>
@@ -187,4 +188,4 @@ const handleExit = ()=>{
 
 }
 
-export default Round2
+export default Round3
