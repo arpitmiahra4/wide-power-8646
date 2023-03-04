@@ -2,7 +2,7 @@ import axios from 'axios';
 import {useAppDispatch} from '../Store'
 import { GET_ROOM_ERROR, GET_ROOM_LOADING, GET_ROOM_SUCCESS } from './room.actionTypes'
 
-export const getRoomDetails = (roomid : string)=>async (dispatch : useAppDispatch)=>{
+export const getRoomDetails = (roomid : string|undefined)=>async (dispatch : useAppDispatch)=>{
     try{
         dispatch({type : GET_ROOM_LOADING});
         const response = await axios.get(`${process.env['BASE_URL']}/room/singleroom/${roomid}`);
@@ -14,7 +14,7 @@ export const getRoomDetails = (roomid : string)=>async (dispatch : useAppDispatc
     }
 }
 
-export const createNewRoom = (userid : string, username : string)=>async(dispatch : useAppDispatch)=>{
+export const createNewRoom = (userid : string|undefined, username : string|undefined)=>async(dispatch : useAppDispatch)=>{
     try{
         dispatch({type : GET_ROOM_LOADING})
         const response = await axios.post(`${process.env['BASE_URL']}/room/create`,{userid,username});
@@ -27,7 +27,7 @@ export const createNewRoom = (userid : string, username : string)=>async(dispatc
     }
 }
 
-export const joinNewRoom = (roomid : string,userid : string,username : string)=>async(dispatch:useAppDispatch)=>{
+export const joinNewRoom = (roomid : string|undefined,userid : string|undefined,username : string|undefined)=>async(dispatch:useAppDispatch)=>{
     try{
         dispatch({type : GET_ROOM_LOADING})
         const response = await axios.post(`${process.env['BASE_URL']}/room/join/${roomid}`,{userid,username});
@@ -53,7 +53,7 @@ export const increasePlayerScore = (roomid : string, player_id : string, usernam
     }
 }
 
-export const startRandomGame = (userid: string, username : string) => async (dispatch : useAppDispatch)=>{
+export const startRandomGame = (userid: string | undefined, username : string | undefined) => async (dispatch : useAppDispatch)=>{
     try{
         dispatch({type : GET_ROOM_LOADING});
         const response = await axios.patch(`${process.env['BASE_URL']}/room/join`,{
