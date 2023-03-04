@@ -1,11 +1,11 @@
 import React from 'react';
 import { useEffect, useState, useRef } from 'react';
-import { Grid, GridItem, Spinner, VStack, Text, Image, Box } from "@chakra-ui/react";
+import { Grid, GridItem, Spinner, VStack, Text, Image, Box, Heading } from "@chakra-ui/react";
 import styles from '../styles/Lobby.module.css';
 import { PlayerDetails } from "../constants/constants";
 import axios, { AxiosResponse } from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
     Modal,
     ModalOverlay,
@@ -13,9 +13,13 @@ import {
     ModalBody,
     useDisclosure
 } from '@chakra-ui/react'
+import { getRoomDetails } from '../store/Room/room.action';
+import { useAppDispatch } from '../store/Store';
 
-const getUsers = async (id: String): Promise<PlayerDetails[]> => {
-    let response: AxiosResponse<any> = await axios.get(`http://localhost:8080/room/singleroom/${id}`);
+const baseUrl = process.env.REACT_APP_BASE_URL;
+
+const getUsers = async (id: String|undefined): Promise<PlayerDetails[]> => {
+    let response: AxiosResponse<any> = await axios.get(`${baseUrl}/room/singleroom/${id}`);
     return response.data[0].players;
 }
 
@@ -32,19 +36,32 @@ const Lobby = () => {
     const navigate = useNavigate();
 
     const roomManager: any = useSelector((store: any): any => store.roomManager);
+    const dispatch : useAppDispatch = useDispatch();
 
-    // const id : string = (roomManager.data === null ?  "27a302" : roomManager.data.roomid);
+    const id : string = (roomManager.data === null ?  "" : roomManager.data.roomid);
+    const error : boolean = roomManager.error;
 
-    const id: string = "27a302";
+    console.log("this is id" , id);
+
+    // const id: string = "27a302";
 
     useEffect(() => {
         intervalId.current = setInterval(() => {
-            getUsers(id).then((res) => {
-                setUsers(res);
-            });
+            console.log("outside the if condition" , id);
+            if(id !== ""){
+                console.log("in the if condition" , id);
+                getUsers(id).then((res) => {
+                    setUsers(res);
+                });
+            }
+            // dispatch(getRoomDetails(id));
         }, 2000);
         return (() => clearInterval(intervalId.current));
     }, []);
+
+   
+
+
 
 
     useEffect(() => {
@@ -59,7 +76,9 @@ const Lobby = () => {
         }
     }, [users]);
 
-
+    if(error){
+        return <Heading>Error...</Heading>;
+    }
     return (
         <>
             {
