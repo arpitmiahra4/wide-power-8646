@@ -6,7 +6,7 @@ import {
 } from "../../constants/constants";
 import * as types from "./auth.actionTypes";
 import { Dispatch } from 'redux';
-import { getItem, setItem } from '../../utils/localStorage';
+import { setItem } from '../../utils/localStorage';
 import axios from 'axios';
 
 export const registerUser =
@@ -31,11 +31,7 @@ export const registerUser =
   (dispatch: ({ type, payload }: AuthReducer) => Dispatch) => {
     dispatch({ type: types.LOGIN_USER_LOADING });
     return axios
-      .post('http://localhost:8080/user/login', userCreds , {
-        headers:{
-          Authorization: `Bearer ${getItem("token")}`
-        }
-      })
+      .post('http://localhost:8080/user/login', userCreds)
       .then((res) => {
         dispatch({ type: types.LOGIN_USER_SUCCESS, payload: res.data });
         setItem('token', res.data.token);

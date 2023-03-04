@@ -16,16 +16,13 @@ import {
   ModalOverlay,
   Modal,
   ModalContent,
-  ModalHeader,
   ModalCloseButton,
   ModalBody,
-  Text,
   ModalFooter,
   Img,
 } from "@chakra-ui/react";
 import Styles from "../styles/Navbar.module.css";
 import { AiOutlineMenu, AiFillHome, AiFillBell } from "react-icons/ai";
-import { BsFillPersonFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Dispatch, useEffect } from "react";
@@ -119,15 +116,6 @@ const Navbar = () => {
                 >
                   Rules Book
                 </Button>
-                <Link to={"/login"}>
-                  <Button
-                    w="full"
-                    variant="ghost"
-                    leftIcon={<BsFillPersonFill size={20} />}
-                  >
-                    Login
-                  </Button>
-                </Link>
               </VStack>
             </Box>
             <chakra.a
@@ -175,16 +163,6 @@ const Navbar = () => {
           </ModalFooter>
         </ModalContent>
       </Modal>
-
-              <Link to={"/login"}>
-                <Button
-                  variant="ghost"
-                  leftIcon={<BsFillPersonFill size={20} />}
-                  size="sm"
-                >
-                  Login
-                </Button>
-              </Link>
             </HStack>
           </HStack>
           <HStack
