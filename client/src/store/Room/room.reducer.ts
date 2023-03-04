@@ -7,7 +7,7 @@ const initRoomState : {data : RoomType|null,loading : boolean, error : boolean}=
     error : false
 } 
 
-export const reducer = (state : {data : RoomType | null,loading : boolean, error : boolean},{type ,payload} : any)=>{
+export const roomReducer = (state : {data : RoomType | null,loading : boolean, error : boolean}=initRoomState,{type ,payload} : any)=>{
     switch(type){
         case GET_ROOM_LOADING : {
             return {
