@@ -260,7 +260,7 @@ export default function Signup() {
                 colorScheme={'purple'}
                 color={'purple.200'}
               >
-                <Link to={'/login'}>Already registered? Login</Link>
+                <Link to={'/'}>Already registered? Login</Link>
               </Button>
             </Flex>
             {step === 3 ? (

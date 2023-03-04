@@ -72,7 +72,7 @@ const ChakraBox = chakra(motion.div, {
             <BsFill2CircleFill size={25} color="blue"/>
           </Box>
           <Box>
-            <Text fontSize={25}>Arpit Mishra</Text>
+            <Text fontSize={25}>Harshal</Text>
           </Box>
           <Box>
             <BsFillStarFill size={25} color="yellow" className={Styles.rotate_center}/>
@@ -84,7 +84,7 @@ const ChakraBox = chakra(motion.div, {
             <BsFill3CircleFill size={25} color="red"/>
           </Box>
           <Box>
-            <Text fontSize={25}>Arpit Mishra</Text>
+            <Text fontSize={25}>Snehil Agrahari</Text>
           </Box>
           <Box>
             <BsFillStarFill size={25} color="yellow" className={Styles.rotate_center}/>
@@ -96,14 +96,14 @@ const ChakraBox = chakra(motion.div, {
             <BsFill4CircleFill size={25} color="teal" />
           </Box>
           <Box>
-            <Text fontSize={25}>Arpit Mishra</Text>
+            <Text fontSize={25}>Raj Parmar</Text>
           </Box>
           <Box>
             <BsFillStarFill size={25} color="yellow" className={Styles.rotate_center}/>
           </Box>
         </Flex>
         {/* five */}
-        <Flex mt={"8%"} gap="10%" alignItems={"center"} >
+        {/* <Flex mt={"8%"} gap="10%" alignItems={"center"} >
           <Box>
             <BsFill5CircleFill size={25} color="purple" />
           </Box>
@@ -113,7 +113,7 @@ const ChakraBox = chakra(motion.div, {
           <Box>
             <BsFillStarFill size={25} color="yellow" className={Styles.rotate_center}/>
           </Box>
-        </Flex>
+        </Flex> */}
       </Box>
       <Box w={"50%"} className={Styles.scale_up_top} bg="#1a1c1e" h={"52vh"} mt={"5%"} borderRadius={10}>
         <Joining />
