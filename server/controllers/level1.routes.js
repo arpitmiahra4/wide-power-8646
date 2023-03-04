@@ -12,8 +12,10 @@ const level1Router = express.Router(); // creating the saperate router for the u
 
 // this is the post API for adding the word in DB.
 level1Router.post("/add", async (req, res) => {
+    let {word , hint , clue1 , clue2} = req.body;
+    word = word.toUpperCase();
     try {
-        let newWord = new Level1Model(req.body);
+        let newWord = new Level1Model({word,hint,clue1,clue2});
         await newWord.save();
         res.status(200).send({ message: "sucessfully added the word..." });
     } catch (error) {
