@@ -60,6 +60,7 @@ const Navbar = () => {
         borderRadius={20}
         position="sticky"
         top={0}
+        zIndex={1}
 
       >
         <Flex alignItems="center" justifyContent="space-between" mx="auto">

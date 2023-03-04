@@ -43,7 +43,7 @@ const ChakraBox = chakra(motion.div, {
         color={"black"}
         fontWeight="bold"
       >
-        Well-Come
+        WELCOME
       </ChakraBox>
       </Box>
       <Box mt="10%">
