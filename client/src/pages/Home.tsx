@@ -115,7 +115,7 @@ const ChakraBox = chakra(motion.div, {
           </Box>
         </Flex>
       </Box>
-      <Box w={"50%"} bg="#1a1c1e" h={"52vh"} mt={"5%"} borderRadius={10}>
+      <Box w={"50%"} className={Styles.scale_up_top} bg="#1a1c1e" h={"52vh"} mt={"5%"} borderRadius={10}>
         <Joining />
       </Box>
     </Flex>

@@ -16,7 +16,7 @@ const Joining = () => {
                 </Box>
             </Flex>
         </Box>
-        <Box mt={"2%"}>
+        <Box mt={"5%"}>
             <Text textAlign={"center"} fontSize={25} className={Styles.ccc} fontFamily="cursive" fontWeight="bold" color="red">Join Existing Room</Text>
             <Flex alignItems={"center"} pl="4%" gap={5}>
             <Input mt={"5%"} w={"80%"} border="2px solid #44d62c" textAlign="center" color={"red"} fontSize={18} fontWeight="bold" placeholder='Please Enter Room Id' type="text"/>
@@ -26,7 +26,7 @@ const Joining = () => {
                 </Box>
             </Flex>
         </Box>
-        <Box mt={"2%"}>
+        <Box mt={"5%"}>
             <Text textAlign={"center"} fontSize={25} className={Styles.ccc} fontFamily="cursive" fontWeight="bold" color="green">Create New Room</Text>
             <Flex alignItems={"center"} pl="4%" gap={5}>
             <Input mt={"5%"} w={"80%"} border="2px solid #44d62c" textAlign="center" color={"red"} fontSize={18} fontWeight="bold" placeholder='Please Enter New Room Id' type="text"/>
