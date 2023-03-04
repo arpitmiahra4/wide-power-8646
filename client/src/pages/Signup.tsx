@@ -188,7 +188,7 @@ export default function Signup() {
       duration: 3000,
       isClosable: true,
     });
-    navigate('/login')
+    navigate('/')
   };
 
   return (
