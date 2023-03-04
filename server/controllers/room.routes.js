@@ -6,6 +6,7 @@ const Level1Model = require("../models/level1.model");
 const Level2Model = require("../models/level2.model");
 const Level3Model = require("../models/level3.model");
 const Level4Model = require("../models/level4.model");
+const { findOneAndUpdate } = require("../models/rooms.model");
 
 require("dotenv").config();
 
@@ -176,13 +177,13 @@ roomRoute.patch("/updatescore/:roomid", async (req, res) => {
 
 roomRoute.patch("/gameover/:roomid", async (req, res) => {
   const roomid = req.params.roomid;
-  const { player_id, score } = req.body;
   try {
-    await RoomsModel.findOneAndUpdate(
-      { roomid: roomid },
-      { $set: { winner:{user_id:player_id,winning_score:score}, game_over: true } }
-    );
-    res.send({ msg: "Room Updated with winer and Game Over..." });
+    const match = await RoomsModel.findOne({roomid});
+    let players = match.players;
+    players.sort((a,b)=>b.score-a.score);
+    const winner = players[0];
+    await findOneAndUpdate({roomid},{winner : {user_id : winner.user_id, winning_score : winner.score}});
+    res.send({ msg: "Room Updated with winer and Game Over...", leaderboard : players });
   } catch (error) {
     console.log(error);
     res.status(500).send({ msg: "Somthing Went Wrong" });
