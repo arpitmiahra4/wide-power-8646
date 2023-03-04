@@ -38,7 +38,7 @@ const Round1 = () => {
   const [clue2, setClue2] = useState<boolean>(false);
   const [roundEnd, setRoundEnd] = useState<boolean>(false);
   const navigate = useNavigate()
-  const players : string[] =["player1","player2","player3","player4"]
+  const players : string[] =["snehil","raj","harshal","arpit"]
   const [answer, setAnswer] = useState<string>("");
   const [submit,setSubmit] = useState<boolean>(false);
   const [exit, setExit] = useState<boolean>(false);
@@ -119,13 +119,13 @@ const handleExit = ()=>{
       <Button onClick={handleExit} colorScheme="blue" variant="solid" position="absolute" bottom={4} right="20px"> <BiExit fontSize="20px" /> Exit</Button>
       <Flex direction={{base : 'row', sm: 'row', md : "column" }} justifyContent="center" alignItems="center" flex={2} gap={6}>
         {
-          players.map((el)=>{
+          players.map((el,i)=>{
             return (
-              <Flex gap={2} alignItems="center">
-                <Circle p={1} border="2px solid red">
-                  <Text fontWeight="bold" >R</Text>
+              <Flex gap={2} w="full" alignItems="center" borderBottom="1px solid skyblue" p={"0px 20px"}>
+                <Circle p={"5px 13px"} border="2px solid red">
+                  <Text fontWeight="bold" color={'red.400'}>{i+1}</Text>
                 </Circle>
-                <Text fontWeight="bold" fontSize="lg" color="blue.500">{el}</Text>
+                <Text fontWeight="bold" fontSize="lg" color="blue.500">{el.toUpperCase()}</Text>
               </Flex>
             )
           })
@@ -135,6 +135,7 @@ const handleExit = ()=>{
         <VStack w="full" border="2px solid white" p={2} h="full" justifyContent={'space-between'}>
           <HStack w="full" justifyContent="space-between">
             <Text fontSize="2xl" fontFamily="Silkscreen, cursive" color={count2>5?"green":"red"}>TIME REMAINING : 00:{count2<10?`0${count2}`:count2}</Text>
+            <Text fontSize="2xl" fontFamily="Silkscreen, cursive" color="white">ROUND-1</Text>
             <Text fontSize="2xl" fontFamily="Silkscreen, cursive" color="red.500">
               Current Score : <Text as="span">{50}</Text>
             </Text>

@@ -114,7 +114,8 @@ export type State = {
 export interface playerType{
   user_id: string,
   username : string,
-  score: number
+  score: number,
+  _id : string
 }
 
 export interface levelType{

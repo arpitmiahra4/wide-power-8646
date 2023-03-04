@@ -6,6 +6,7 @@ import {
   } from 'redux';
 import { reducer as AuthReducer } from './Auth/auth.reducer';
 import thunk from 'redux-thunk';
+import { roomReducer } from './Room/room.reducer';
 
 declare global {
     interface Window {
@@ -17,7 +18,8 @@ declare global {
   window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
-  auth: AuthReducer
+  auth: AuthReducer,
+  roomManager : roomReducer 
 });
 
 export const store = legacy_createStore(
