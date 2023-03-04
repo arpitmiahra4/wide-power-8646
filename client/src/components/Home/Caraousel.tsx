@@ -50,7 +50,7 @@ const Caraousel = () => {
       borderRadius={10}
     >
       <Flex w="full" overflow="hidden" borderRadius={20} className={Styles.ccc}>
-        <Flex pos="relative" h="300px" w="full" {...carouselStyle}>
+        <Flex pos="relative" h="350px" w="full" {...carouselStyle}>
           {slides.map((slide, sid) => (
             <Box key={`slide-${sid}`} flex="none" boxSize="full" shadow="md">
               <Image

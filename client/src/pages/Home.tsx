@@ -50,8 +50,9 @@ const ChakraBox = chakra(motion.div, {
         <Caraousel />
       </Box>
       </Box>
-    <Flex border={"2px solid red"} w="60%" gap={"3%"}>
-      <Box className={Styles.scale_up_top} border={"1px solid yellow"} bg="#1a1c1e" borderRadius={10} w="42%" mt={"5%"} ml="2%" h={"52vh"} pl="3%">
+      <Box  w="60%">
+    <Flex w="100%" gap={"3%"}>
+      <Box className={Styles.scale_up_top} bg="#1a1c1e" borderRadius={10} w="42%" mt={"5%"} ml="2%" h={"52vh"} pl="3%">
         <Text textAlign={"center"} fontSize={30} fontFamily="cursive"fontWeight="bold" className={Styles.ccc}>Top Scorer</Text>
         <Flex mt={"8%"} gap="10%" alignItems={"center"}>
           <Box>
@@ -110,10 +111,14 @@ const ChakraBox = chakra(motion.div, {
           </Box>
         </Flex>
       </Box>
-      <Box w={"50%"} border="2px solid red" h={"52vh"} mt={"5%"} borderRadius={10}>
+      <Box w={"50%"} bg="#1a1c1e" h={"52vh"} mt={"5%"} borderRadius={10}>
         <Joining />
       </Box>
     </Flex>
+    <Box mt={"1%"} pl="2%">
+      <Image src="https://64.media.tumblr.com/290557944dc89a2741007c445d6f6de6/tumblr_pm5z65C0hF1qbw2q1o1_1280.gif" borderRadius={10} w={"100%"} h="220px"/>
+    </Box>
+    </Box>
     </Flex>
     </>
   )
