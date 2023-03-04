@@ -38,7 +38,7 @@ const Round1 = () => {
   const [clue2, setClue2] = useState<boolean>(false);
   const [roundEnd, setRoundEnd] = useState<boolean>(false);
   const navigate = useNavigate()
-  const players : string[] =["player1","player2","player3","player4"]
+  const players : string[] =["snehil","raj","harshal","arpit"]
   const [answer, setAnswer] = useState<string>("");
   const [submit,setSubmit] = useState<boolean>(false);
   const [exit, setExit] = useState<boolean>(false);
@@ -135,6 +135,7 @@ const handleExit = ()=>{
         <VStack w="full" border="2px solid white" p={2} h="full" justifyContent={'space-between'}>
           <HStack w="full" justifyContent="space-between">
             <Text fontSize="2xl" fontFamily="Silkscreen, cursive" color={count2>5?"green":"red"}>TIME REMAINING : 00:{count2<10?`0${count2}`:count2}</Text>
+            <Text fontSize="2xl" fontFamily="Silkscreen, cursive" color="white">ROUND-1</Text>
             <Text fontSize="2xl" fontFamily="Silkscreen, cursive" color="red.500">
               Current Score : <Text as="span">{50}</Text>
             </Text>
