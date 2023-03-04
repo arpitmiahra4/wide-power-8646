@@ -38,8 +38,8 @@ const Lobby = () => {
     const roomManager: any = useSelector((store: any): any => store.roomManager);
     const dispatch : useAppDispatch = useDispatch();
 
-    const id : string = (roomManager.data === null ?  "" : roomManager.data.roomid);
-    const error : boolean = roomManager.error;
+    const id : string = (roomManager.data === null ?  "15a3b0" : roomManager.data.roomid);
+    // const error : boolean = roomManager.error;
 
     console.log("this is id" , id);
 
@@ -76,9 +76,9 @@ const Lobby = () => {
         }
     }, [users]);
 
-    if(error){
-        return <Heading>Error...</Heading>;
-    }
+    // if(error){
+    //     return <Heading>Error...</Heading>;
+    // }
     return (
         <>
             {

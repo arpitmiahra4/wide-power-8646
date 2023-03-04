@@ -7,7 +7,7 @@ const BASE_URL = process.env.BASE_URL;
 export const getRoomDetails = (roomid : string|undefined)=>async (dispatch : useAppDispatch)=>{
     try{
         dispatch({type : GET_ROOM_LOADING});
-        const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/room/singleroom/${roomid}`);
+        const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/room/singleroom/15a3b0`);
         const data = response.data[0];
         dispatch({type : GET_ROOM_SUCCESS, payload : data});
     }
