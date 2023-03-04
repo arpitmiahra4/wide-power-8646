@@ -1,4 +1,5 @@
 export interface UserDetails {
+  _id?:string;
   username: string;
   email: string;
   password: string;
@@ -57,6 +58,7 @@ export type SignupProps = {
 };
 export type State = {
   auth: AuthInitialState;
+  roomManager:RoomType;
 };
 
 // const roomsSchema = mongoose.Schema({

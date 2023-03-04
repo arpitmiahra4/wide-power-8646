@@ -180,15 +180,20 @@ roomRoute.patch("/gameover/:roomid", async (req, res) => {
   try {
     const match = await RoomsModel.findOne({roomid});
     let players = match.players;
-    console.log(players);
-    players.sort((a,b)=>b.score-a.score);
-    console.log(players);
+    players.sort((a,b)=>{
+      if(b.score>a.score)
+        return 1;
+      else if(b.score==a.score && b.time<a.time)
+          return 1;
+      else 
+          return -1;
+    });
     const winner = players[0];
     await RoomsModel.findOneAndUpdate({roomid},{winner : {user_id : winner.user_id, winning_score : winner.score}});
-    res.send({ msg: "Room Updated with winer and Game Over...", leaderboard : players });
+    res.send({ msg: "Room Updated with winner and Game Over...", leaderboard : players });
   } catch (error) {
     console.log(error);
-    res.status(500).send({ msg: "Somthing Went Wrong" });
+    res.status(500).send({ msg: "Something Went Wrong" });
   }
 });
 
