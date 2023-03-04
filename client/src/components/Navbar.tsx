@@ -16,16 +16,13 @@ import {
   ModalOverlay,
   Modal,
   ModalContent,
-  ModalHeader,
   ModalCloseButton,
   ModalBody,
-  Text,
   ModalFooter,
   Img,
 } from "@chakra-ui/react";
 import Styles from "../styles/Navbar.module.css";
 import { AiOutlineMenu, AiFillHome, AiFillBell } from "react-icons/ai";
-import { BsFillPersonFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Dispatch, useEffect } from "react";

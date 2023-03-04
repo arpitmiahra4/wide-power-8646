@@ -1,5 +1,5 @@
-import React, { Dispatch, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { Dispatch, useState } from "react";
+import { useDispatch } from "react-redux";
 import {
   Button,
   Checkbox,
@@ -54,12 +54,12 @@ const Login = () => {
     } else {
       return toast({
         title: 'Account created.',
-        description: "We've created your account for you.",
+        description: "Please created your account.",
         status: 'error',
         position: 'bottom',
         variant: 'subtle',
         containerStyle: {
-          backgroundColor: 'purple.700',
+          backgroundColor: 'red.700',
           borderRadius: 'md',
         },
         duration: 3000,
