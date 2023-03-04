@@ -2,9 +2,10 @@ import { Box, Flex, Image, Text } from '@chakra-ui/react'
 import React from 'react'
 import Caraousel from '../components/Home/Caraousel'
 import Styles from '../styles/Home.module.css'
-import { BsFill1CircleFill , BsFill2CircleFill , BsFill3CircleFill ,BsFill4CircleFill , BsRocketTakeoffFill } from "react-icons/bs";
-import { Container, chakra, shouldForwardProp } from '@chakra-ui/react';
+import { BsFill1CircleFill , BsFill2CircleFill , BsFill3CircleFill ,BsFill5CircleFill ,BsFill4CircleFill , BsFillStarFill } from "react-icons/bs";
+import { chakra, shouldForwardProp } from '@chakra-ui/react';
 import { motion, isValidMotionProp } from 'framer-motion';
+import Joining from '../components/Home/Joining';
 const Home = () => {
 const ChakraBox = chakra(motion.div, {
   shouldForwardProp: (prop) => isValidMotionProp(prop) || shouldForwardProp(prop),
@@ -49,7 +50,7 @@ const ChakraBox = chakra(motion.div, {
         <Caraousel />
       </Box>
       </Box>
-    <Box border={"2px solid red"} w="60%" >
+    <Flex border={"2px solid red"} w="60%" gap={"3%"}>
       <Box className={Styles.scale_up_top} border={"1px solid yellow"} bg="#1a1c1e" borderRadius={10} w="42%" mt={"5%"} ml="2%" h={"52vh"} pl="3%">
         <Text textAlign={"center"} fontSize={30} fontFamily="cursive"fontWeight="bold" className={Styles.ccc}>Top Scorer</Text>
         <Flex mt={"8%"} gap="10%" alignItems={"center"}>
@@ -60,7 +61,7 @@ const ChakraBox = chakra(motion.div, {
             <Text fontSize={25}>Arpit Mishra</Text>
           </Box>
           <Box>
-            <BsRocketTakeoffFill size={25} color="yellow" className={Styles.rotate_center}/>
+            <BsFillStarFill size={25} color="yellow" className={Styles.rotate_center}/>
           </Box>
         </Flex>
         <Flex mt={"8%"} gap="10%" alignItems={"center"}>
@@ -71,7 +72,7 @@ const ChakraBox = chakra(motion.div, {
             <Text fontSize={25}>Arpit Mishra</Text>
           </Box>
           <Box>
-            <BsRocketTakeoffFill size={25} color="yellow" className={Styles.rotate_center}/>
+            <BsFillStarFill size={25} color="yellow" className={Styles.rotate_center}/>
           </Box>
         </Flex>
         <Flex mt={"8%"} gap="10%" alignItems={"center"}>
@@ -82,7 +83,7 @@ const ChakraBox = chakra(motion.div, {
             <Text fontSize={25}>Arpit Mishra</Text>
           </Box>
           <Box>
-            <BsRocketTakeoffFill size={25} color="yellow" className={Styles.rotate_center}/>
+            <BsFillStarFill size={25} color="yellow" className={Styles.rotate_center}/>
           </Box>
         </Flex>
         <Flex mt={"8%"} gap="10%" alignItems={"center"} >
@@ -93,23 +94,26 @@ const ChakraBox = chakra(motion.div, {
             <Text fontSize={25}>Arpit Mishra</Text>
           </Box>
           <Box>
-            <BsRocketTakeoffFill size={25} color="yellow" className={Styles.rotate_center}/>
+            <BsFillStarFill size={25} color="yellow" className={Styles.rotate_center}/>
           </Box>
         </Flex>
 
         <Flex mt={"8%"} gap="10%" alignItems={"center"} >
           <Box>
-            <BsFill4CircleFill size={25} color="teal" />
+            <BsFill5CircleFill size={25} color="purple" />
           </Box>
           <Box>
             <Text fontSize={25}>Arpit Mishra</Text>
           </Box>
           <Box>
-            <BsRocketTakeoffFill size={25} color="yellow" className={Styles.rotate_center}/>
+            <BsFillStarFill size={25} color="yellow" className={Styles.rotate_center}/>
           </Box>
         </Flex>
       </Box>
-    </Box>
+      <Box w={"50%"} border="2px solid red" h={"52vh"} mt={"5%"} borderRadius={10}>
+        <Joining />
+      </Box>
+    </Flex>
     </Flex>
     </>
   )
