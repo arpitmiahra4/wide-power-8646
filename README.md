@@ -1,7 +1,8 @@
 # wide-power-8646
 Full-Stack Word Game with Admin Dashboard Where users can compete with each other.
 
-[Visit Now](https://blueapple.vercel.app/) 🚀
+## Deployment is in progress will update soon. 
+[Visit Now]() 🚀
 
 ## 🖥️ Tech Stack
 **Frontend:**
