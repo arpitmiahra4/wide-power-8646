@@ -41,7 +41,6 @@ Full-Stack Word Game with Admin Dashboard Where users can compete with each othe
   </tr>
   <tr>
     <td><img src="https://i.ibb.co/wR8fX7T/Screenshot-2023-03-05-183540.png" alt="mockup" /></td>
-    <td><img src="" alt="mockups" /></td>
   </tr>
 </table>
 
