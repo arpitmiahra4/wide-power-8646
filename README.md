@@ -31,16 +31,16 @@ Full-Stack Word Game with Admin Dashboard Where users can compete with each othe
 - Comparing users by score
 - And also compare users via time
 
-
-
+## Wanna Look of UI 🙈 :
+![Capture](https://i.ibb.co/jhQhY72/Screenshot-2023-03-05-183501.png)
 
 <table>
   <tr>
-    <td><img src="" alt="mockup" /></td>
-    <td><img src="" alt="mockups" /></td>
+    <td><img src="https://i.ibb.co/GtSF5z9/Screenshot-2023-03-05-183416.png" alt="mockup" /></td>
+    <td><img src="https://i.ibb.co/SQN2G2K/Screenshot-2023-03-05-183431.png" alt="mockups" /></td>
   </tr>
   <tr>
-    <td><img src="" alt="mockup" /></td>
+    <td><img src="https://i.ibb.co/wR8fX7T/Screenshot-2023-03-05-183540.png" alt="mockup" /></td>
     <td><img src="" alt="mockups" /></td>
   </tr>
 </table>
