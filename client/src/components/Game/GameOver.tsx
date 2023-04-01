@@ -11,25 +11,33 @@ const GameOver = () => {
             "user_id": "6400eb96d3055713ed2fb197",
             "username": "YOU",
             "score": 80,
+            "time" : 45,
+            "user_avatar" : "https://png.pngtree.com/png-clipart/20221207/ourmid/pngtree-purple-hair-girl-avatar-png-image_6514621.png",
             "_id": "6401bfa8c776dfeca3722487"
           },
           {
             "user_id": "6400eb96d3055713ed2fb197",
             "username": "HARSHAL",
             "score": 60,
-            "_id": "6402fc42c093c701a2fd1599"
+            time : 55,
+            "_id": "6402fc42c093c701a2fd1599",
+            "user_avatar" : "https://png.pngtree.com/png-clipart/20221207/ourmid/pngtree-purple-hair-girl-avatar-png-image_6514621.png"
           },
           {
             "user_id": "6400c57a0213fd7aef75734b",
             "username": "SNEHIL",
             "score": 40,
-            "_id": "6402fc8dc093c701a2fd15a6"
+            time : 52,
+            "_id": "6402fc8dc093c701a2fd15a6",
+            "user_avatar" : "https://png.pngtree.com/png-clipart/20221207/ourmid/pngtree-purple-hair-girl-avatar-png-image_6514621.png"
           },
           {
             "user_id": "6400c57a0213fd7aef75734b",
             "username": "RAJ PARMAR",
             "score": 30,
-            "_id": "640300784f23b1875a45f9c5"
+            time : 22,
+            "_id": "640300784f23b1875a45f9c5",
+            "user_avatar" : "https://png.pngtree.com/png-clipart/20221207/ourmid/pngtree-purple-hair-girl-avatar-png-image_6514621.png"
           }
     ]);
 

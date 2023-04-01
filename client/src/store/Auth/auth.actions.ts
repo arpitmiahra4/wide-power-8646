@@ -45,7 +45,7 @@ export const registerUser =
   };
 
   export const getUserDetails =
-  (username?: string | null) =>
+  (username: string | null) =>
   (dispatch: ({ type, payload }: ReducerProps) => Dispatch) => {
     dispatch({ type: types.GET_USER_DETAILS_LOADING });
     return axios
@@ -57,6 +57,7 @@ export const registerUser =
         });
       })
       .catch((err) => {
+        console.log(err);
         dispatch({ type: types.GET_USER_DETAILS_FAILURE });
       });
   };

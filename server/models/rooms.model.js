@@ -1,55 +1,58 @@
 const mongoose = require("mongoose");
 
 const roomsSchema = mongoose.Schema({
-  roomid: { type: String, required: true },
- 
+  roomId: { type: String, required: true },
   room_availability: { type: Boolean, default: true },
   players: [
     {
-      user_id: { type: String, required: true },
-      username:{ type: String, required: true },
-      score:{ type: Number,default: 0}
+      user_id: { type: String,required : true},
+      username:{ type: String, required : true},
+      user_avatar : {type : String, required : true},
+      score:{ type: Number,default: 0},
+      time :{type:Number,default:0}
     }
   ],
   level1:{
-    word_id:String,
-    question:String,
-    word:String,
-    hint:String,
-    clue1:String,
-    clue2:String
+    question:{type : String,required :true},
+    word:{type : String, required : true},
+    hint:{type : String, required : true},
+    clue1:{type : String, required : true},
+    clue2:{type : String, required : true},
+    messages : {type : Array, default : []}
   },
   level2:{
-    word_id:String,
-    question:String,
-    word:String,
-    hint:String,
-    clue1:String,
-    clue2:String
+    question:{type : String,required :true},
+    word:{type : String, required : true},
+    hint:{type : String, required : true},
+    clue1:{type : String, required : true},
+    clue2:{type : String, required : true},
+    messages : {type : Array, default : []}
   },
   level3:{
-    word_id:String,
-    question:String,
-    word:String,
-    hint:String,
-    clue1:String,
-    clue2:String
+    question:{type : String,required :true},
+    word:{type : String, required : true},
+    hint:{type : String, required : true},
+    clue1:{type : String, required : true},
+    clue2:{type : String, required : true},
+    messages : {type : Array, default : []}
   },
   level4:{
-    word_id:String,
-    question:String,
-    word:String,
-    hint:String,
-    clue1:String,
-    clue2:String
+    question:{type : String,required :true},
+    word:{type : String, required : true},
+    hint:{type : String, required : true},
+    clue1:{type : String, required : true},
+    clue2:{type : String, required : true},
+    messages : {type : Array, default : []}
   },
 
   winner: {
-    user_id: String,
-    winning_score: Number,
+    user_id: {type : String,default : ""},
+    score: {type : String, default : ""}
   },
   game_over: { type: Boolean, default: false },
   created_at: { type: Date, required: true },
+},{
+  versionKey : false
 });
 
 const RoomsModel = mongoose.model("room", roomsSchema);

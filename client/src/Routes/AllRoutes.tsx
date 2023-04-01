@@ -7,6 +7,7 @@ import Round3 from '../components/Game/Round3'
 import Round4 from '../components/Game/Round4'
 import Home from '../pages/Home'
 import Lobby from '../pages/Lobby'
+import Lobby1 from '../pages/Lobby1'
 import Login from '../pages/Login'
 import Signup from '../pages/Signup'
 
@@ -17,6 +18,7 @@ const AllRoutes = () => {
         <Route path="/signup" element={<Signup />} />
         <Route path="/" element={<Login />} />
         <Route path="/lobby" element={<Lobby />} />
+        <Route path='/lobby1/:id' element={<Lobby1 />} />
         <Route path="/round1" element={<Round1 />} />
         <Route path="/round2" element={<Round2 />} />
         <Route path="/round3" element={<Round3 />} />

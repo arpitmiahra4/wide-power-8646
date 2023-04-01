@@ -38,7 +38,7 @@ userRouter.get("/", async (req, res) => {
 userRouter.post("/signup", async (req, res) => {
   console.log("in the signup");
   let { username, email, mobile, password } = req.body;
-  let user_avtar = avtararr[Math.floor(Math.random() * avtararr.length)];
+  let user_avatar = avtararr[Math.floor(Math.random() * avtararr.length)];
   bcrypt.hash(password, +salt, async function (err, hash) {
     if (err) {
       return res.status(500).send({err});
@@ -49,7 +49,7 @@ userRouter.post("/signup", async (req, res) => {
       email,
       password: hash,
       mobile,
-      avtar: user_avtar,
+      avatar: user_avatar,
     });
     try {
       await user.save();

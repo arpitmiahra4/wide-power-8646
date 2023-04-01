@@ -3,6 +3,7 @@ export interface UserDetails {
   username: string;
   email: string;
   password: string;
+  avatar ?: string;
   mobile: Number;
   no_of_wins: Number;
   no_of_looses: Number;
@@ -58,70 +59,27 @@ export type SignupProps = {
 };
 export type State = {
   auth: AuthInitialState;
-  roomManager:RoomType;
+  roomManager:RoomStateType;
 };
 
-// const roomsSchema = mongoose.Schema({
-//   roomid: { type: String, required: true },
- 
-//   room_availability: { type: Boolean, default: true },
-//   players: [
-//     {
-//       user_id: { type: String, required: true },
-//       username:{ type: String, required: true },
-//       score:{ type: Number,default: 0}
-//     }
-//   ],
-//   level1:{
-//     word_id:String,
-//     question:String,
-//     word:String,
-//     hint:String,
-//     clue1:String,
-//     clue2:String
-//   },
-//   level2:{
-//     word_id:String,
-//     question:String,
-//     word:String,
-//     hint:String,
-//     clue1:String,
-//     clue2:String
-//   },
-//   level3:{
-//     word_id:String,
-//     question:String,
-//     word:String,
-//     hint:String,
-//     clue1:String,
-//     clue2:String
-//   },
-//   level4:{
-//     word_id:String,
-//     question:String,
-//     word:String,
-//     hint:String,
-//     clue1:String,
-//     clue2:String
-//   },
-
-//   winner: {
-//     user_id: String,
-//     winning_score: Number,
-//   },
-//   game_over: { type: Boolean, default: false },
-//   created_at: { type: Date, required: true },
-// });
 
 export interface playerType{
   user_id: string,
+  user_avatar : string,
   username : string,
   score: number,
+  time : number,
   _id : string
 }
 
+export interface RoomStateType{
+  data : RoomType,
+  loading : boolean, 
+  error : boolean
+}
+
 export interface levelType{
-  word_id : string,
+  word_id ?: string,
   question  :string,
   word : string,
   hint : string,
@@ -131,17 +89,17 @@ export interface levelType{
 
 export interface winnerType{
   user_id : string,
-  winning_score : number
+  score : number
 }
 export interface RoomType{
-  roomid : string,
-  room_availability : boolean,
-  players : playerType[],
-  level1 : levelType,
-  level2 : levelType,
-  level3 : levelType,
-  level4 : levelType,
-  winner : winnerType,
-  game_over : boolean,
-  created_at : Date
+  roomId ?: string,
+  room_availability ?: boolean,
+  players ?: playerType[],
+  level1 ?: levelType,
+  level2 ?: levelType,
+  level3 ?: levelType,
+  level4 ?: levelType,
+  winner ?: winnerType,
+  game_over ?: boolean,
+  created_at ?: Date
 }

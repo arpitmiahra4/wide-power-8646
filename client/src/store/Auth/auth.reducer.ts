@@ -38,8 +38,8 @@ export const reducer = (
             return {
               ...state,
               isLoading: false,
-              userDetails: payload?.users[0],
-              username: payload?.users[0].username,
+              userDetails: payload?.user[0],
+              username: payload?.user[0].username,
             };
           }
           case types.GET_USER_DETAILS_FAILURE: {

@@ -16,7 +16,7 @@ roomRoute.get("/", async (req, res) => {
   const data = await RoomsModel.find();
   res.send(data);
 });
-const makequestion = (word) => {
+const makequestion = async (word) => {
   let arr = word.trim().split("");
   let n = Math.floor(arr.length / 2);
   const arr2 = new Array(n);
@@ -28,7 +28,6 @@ const makequestion = (word) => {
     }
     arr2[i] = x;
   }
-  console.log(arr2);
   let bag = "";
   for (let i = 0; i < arr.length; i++) {
     if (arr2.includes(i)) {
@@ -41,74 +40,149 @@ const makequestion = (word) => {
 };
 
 roomRoute.post("/create", async (req, res) => {
-  const { userid, username } = req.body;
-  let l1 = await Level1Model.aggregate([{ $sample: { size: 1 } }]);
-  let l2 = await Level2Model.aggregate([{ $sample: { size: 1 } }]);
-  let l3 = await Level3Model.aggregate([{ $sample: { size: 1 } }]);
-  let l4 = await Level4Model.aggregate([{ $sample: { size: 1 } }]);
-  let l1q = makequestion(l1[0].word);
-  let l2q = makequestion(l2[0].word);
-  let l3q = makequestion(l3[0].word);
-  let l4q = makequestion(l4[0].word);
+  try{
+    const { user_id, username, user_avatar } = req.body;
+    let l1 = await Level1Model.find();
+    let l2 = await Level2Model.find();
+    let l3 = await Level3Model.find();
+    let l4 = await Level4Model.find();
 
-  let newroom = new RoomsModel({
-    roomid: crypto.randomBytes(3).toString("hex"),
-    room_availability: true,
-    players: [{ user_id: userid, username: username, score: 0 }],
-    winer: {},
-    game_over: false,
-    created_at: new Date(),
-    level1: { ...l1[0], question: l1q },
-    level2: { ...l2[0], question: l2q },
-    level3: { ...l3[0], question: l3q },
-    level4: { ...l4[0], question: l4q },
-  });
-  await newroom.save();
-  res.send({ msg: "New Room Created", roomid: newroom.roomid, newroom });
+    let word1 = l1[Math.floor(Math.random()*l1.length)]
+    let word2 = l2[Math.floor(Math.random()*l2.length)]
+    let word3 = l3[Math.floor(Math.random()*l3.length)]
+    let word4 = l4[Math.floor(Math.random()*l4.length)]
+
+    let question1 = await makequestion(word1.word);
+    let question2 = await makequestion(word2.word);
+    let question3 = await makequestion(word3.word);
+    let question4 = await makequestion(word4.word);
+    
+    let player={
+      user_id,
+      username,
+      user_avatar
+    }
+    let check = true;
+    let roomId = "";
+    while(check==true){
+      roomId = crypto.randomBytes(3).toString("hex");
+      const match = await RoomsModel.find({roomId});  //checks for existing room ID
+      if(match.length==0)
+        check = false;
+    }
+    
+    let room = new RoomsModel({
+      roomId,
+      room_availability: true,
+      players: [player],
+      winner: {},
+      game_over: false,
+      created_at: new Date(),
+      level1: word1,
+      level2: word2,
+      level3: word3,
+      level4: word4
+    });
+    room.level1.question = question1;
+    room.level2.question = question2;
+    room.level3.question = question3;
+    room.level4.question = question4;
+    await room.save();
+    res.send({ msg: "New Room Created", roomId : room.roomId});
+  }
+  catch(err){
+    res.send({status : 'error', message : err.message});
+  }
+
 });
 roomRoute.patch("/join", async (req, res) => {
-  const { userid, username } = req.body;
+  const { user_id, username, user_avatar } = req.body;
   try {
     let room = await RoomsModel.find({ room_availability: true });
     if (room.length === 0) {
-      res
-        .status(404)
-        .send({
-          msg: "No Room Availabel at this moment Plese Try again letter Or Create New Room",
-        });
-    } else {
+      let l1 = await Level1Model.find();
+      let l2 = await Level2Model.find();
+      let l3 = await Level3Model.find();
+      let l4 = await Level4Model.find();
+
+      let word1 = l1[Math.floor(Math.random()*l1.length)]
+      let word2 = l2[Math.floor(Math.random()*l2.length)]
+      let word3 = l3[Math.floor(Math.random()*l3.length)]
+      let word4 = l4[Math.floor(Math.random()*l4.length)]
+
+      let question1 = await makequestion(word1.word);
+      let question2 = await makequestion(word2.word);
+      let question3 = await makequestion(word3.word);
+      let question4 = await makequestion(word4.word);
+      
+      let player={
+        user_id,
+        username,
+        user_avatar
+      }
+
+      let check = true;
+      let roomId = "";
+      while(check===true){
+        roomId = crypto.randomBytes(3).toString("hex");
+        const match = await RoomsModel.find({roomId});  //checks for existing room ID
+        if(match.length==0)
+          check = false;
+      }
+
+      let room = new RoomsModel({
+        roomId,
+        room_availability: true,
+        players: [player],
+        winner: {},
+        game_over: false,
+        created_at: new Date(),
+        level1: word1,
+        level2: word2,
+        level3: word3,
+        level4: word4
+      });
+      room.level1.question = question1;
+      room.level2.question = question2;
+      room.level3.question = question3;
+      room.level4.question = question4;
+      await room.save();
+      res.send({ msg: "New Room Created", roomId : room.roomId});
+    } 
+    else 
+    {
       let availability = true;
       if (room[0].players.length === 3) {
         availability = false;
       }
       let players = [
         ...room[0].players,
-        { user_id: userid, username: username, score: 0 },
+        { user_id, username, user_avatar },
       ];
 
       await RoomsModel.findOneAndUpdate(
-        { roomid: room[0].roomid },
+        { roomId: room[0].roomId },
         { players, room_availability: availability }
       );
-      res.send({ msg: "Welcome to room", roomid: room[0].roomid });
+      res.send({ msg: "Welcome to room", roomId: room[0].roomId });
     }
   } catch (error) {
-    console.log(error);
-    res.status(500).send({ msg: "Somthing Went Wrong..." });
+    res.status(500).send({ msg: error.message });
   }
 });
 
-roomRoute.patch("/join/:roomid", async (req, res) => {
-  const roomid = req.params.roomid;
-  const { userid, username } = req.body;
+roomRoute.patch("/join/:roomId", async (req, res) => {
+  const roomId = req.params.roomId;
+  const { user_id, username, user_avatar } = req.body;
   try {
-    let room = await RoomsModel.find({ roomid: roomid });
+    let room = await RoomsModel.find({ roomId });
     if (room.length === 0) {
-      res.status(404).send({ msg: "Room Not Found With Roomid" });
+      res.status(404).send({message : 'Room Not Found!', status : 'error'});
     } else {
       if (room[0].room_availability === false) {
         res.status(404).send({
-          msg: "Room is Out of Players Please Try to Create New Room ",
+          status : 'error',
+          message : 'Room already full!'
         });
       } else {
         let availability = true;
@@ -117,68 +191,70 @@ roomRoute.patch("/join/:roomid", async (req, res) => {
         }
         let players = [
           ...room[0].players,
-          { user_id: userid, username: username, score: 0 },
+          { user_id ,username , user_avatar},
         ];
 
         await RoomsModel.findOneAndUpdate(
-          { roomid: roomid },
+          { roomId },
           { players, room_availability: availability }
         );
-        res.send({ msg: "Welcome to room", roomid: roomid });
+        res.send({ msg: "Welcome to room", roomId });
       }
     }
   } catch (error) {
     console.log(error);
-    res.status(500).send({ msg: "Somthing Went Wrong..." });
+    res.status(500).send({ message: error.message});
   }
 });
 
-roomRoute.get("/singleroom/:roomid", async (req, res) => {
-  const roomid = req.params.roomid;
+roomRoute.get("/singleroom/:roomId", async (req, res) => {
+  const roomId = req.params.roomId;
 
   try {
-    let room = await RoomsModel.find({ roomid: roomid });
+    let room = await RoomsModel.find({ roomId });
     if (room.length === 0) {
-      res.status(404).send({ msg: "Room Not Found With Roomid" });
+      res.status(404).send({ message: "No such room available!" });
     } else {
       res.send(room);
     }
   } catch (error) {
     console.log(error);
-    res.status(500).send({ msg: "Somthing Went Wrong" });
+    res.status(500).send({ message : error.message, status  : 'error' });
   }
 });
 
-roomRoute.patch("/updatescore/:roomid", async (req, res) => {
-  const roomid = req.params.roomid;
-  const { player_id, username, score } = req.body;
+roomRoute.patch("/submitanswer/:roomId", async (req, res) => {
+  const roomId = req.params.roomId;
+  const { user_id, score, answer, level } = req.body;
 
   try {
-    let room = await RoomsModel.find({ roomid: roomid });
-    console.log(room);
-    if (room.length == 0) {
-      res.status(404).send({ msg: "Room Not Found With Roomid" });
-    } else {
-      let players = room[0].players;
-
+    let room = await RoomsModel.find({ roomId });
+    let players = room[0]["players"];
+    let levelArr = room[0][level];
+    let messages = room[0][level]["messages"];
+    if(room[0][level]["word"].toLowerCase()===answer.toLowerCase()){
       for (let i = 0; i < players.length; i++) {
-        if (players[i].user_id === player_id) {
-          players[i].score += +score;
+        if (players[i].user_id === user_id) {
+          players[i].score += +(score);
         }
       }
-      await RoomsModel.findOneAndUpdate({ roomid: roomid }, { players });
-      res.send({ msg: "Score Updated Sucsessfully.." });
+      messages = [...messages, {color :  'green', message : `Player ${user_id} has made a correct guess!`}]
     }
-  } catch (error) {
-    console.log(error);
-    res.status(500).send({ msg: "Somthing Went Wrong" });
+    else{
+      messages = [...messages, {color : 'red', messages : `Player ${user_id} has made an incorrect guess!`}] 
+    }
+    await RoomsModel.findOneAndUpdate({ roomId }, { players, [level] : {...levelArr, messages}});
+    res.send({ message : "Score Updated Successfully",players,messages}); 
+  }
+  catch(err) {
+    res.status(500).send({ message: err.message });
   }
 });
 
-roomRoute.patch("/gameover/:roomid", async (req, res) => {
-  const roomid = req.params.roomid;
+roomRoute.patch("/gameover/:roomId", async (req, res) => {
+  const roomId = req.params.roomId;
   try {
-    const match = await RoomsModel.findOne({roomid});
+    const match = await RoomsModel.findOne({roomId});
     let players = match.players;
     players.sort((a,b)=>{
       if(b.score>a.score)
@@ -189,25 +265,23 @@ roomRoute.patch("/gameover/:roomid", async (req, res) => {
           return -1;
     });
     const winner = players[0];
-    await RoomsModel.findOneAndUpdate({roomid},{winner : {user_id : winner.user_id, winning_score : winner.score}});
-    res.send({ msg: "Room Updated with winner and Game Over...", leaderboard : players });
+    await RoomsModel.findOneAndUpdate({roomId},{winner : {user_id : winner.user_id, score : winner.score}, game_over : true});
+    res.send({ players });
   } catch (error) {
-    console.log(error);
-    res.status(500).send({ msg: "Something Went Wrong" });
+    res.status(500).send({ message: error.message });
   }
 });
 
-roomRoute.patch("/gamestart/:roomid", async (req, res) => {
-  const roomid = req.params.roomid;
+roomRoute.patch("/gamestart/:roomId", async (req, res) => {
+  const roomId = req.params.roomId;
   try {
     await RoomsModel.findOneAndUpdate(
-      { roomid: roomid },
-      { $set: { room_availability:false }}
+      { roomId },
+      { room_availability : false }
     );
-    res.send({ msg: "Please Start The Game..." });
+    res.send({message : "Game has Started"});
   } catch (error) {
-    console.log(error);
-    res.status(500).send({ msg: "Somthing Went Wrong" });
+    res.status(500).send({ message: error.message });
   }
 });
 module.exports = roomRoute;

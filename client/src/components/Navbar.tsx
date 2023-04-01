@@ -20,6 +20,7 @@ import {
   ModalBody,
   ModalFooter,
   Img,
+  Text,
 } from "@chakra-ui/react";
 import Styles from "../styles/Navbar.module.css";
 import { AiOutlineMenu, AiFillHome, AiFillBell } from "react-icons/ai";
@@ -122,7 +123,6 @@ const Navbar = () => {
               </VStack>
             </Box>
             <chakra.a
-              href="/home"
               title="Choc Home Page"
               display="flex"
               alignItems="center"
@@ -191,15 +191,16 @@ const Navbar = () => {
               <VisuallyHidden>Notifications</VisuallyHidden>
             </chakra.a>
             {username ? (
-              <Link to={`/user/${userDetails?.username}`}>
-                <Avatar
-                  size="sm"
-                  name={userDetails?.username}
-                  src={
-                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSqlpqZbGYN2V3TeJRArh052k-VdC7ABhKDBgduBMoLt9UHwtZ17hMjBBTP8VXw3CV7Xc&usqp=CAU"
-                  }
-                />
-              </Link>
+              <HStack>
+                <Link to={`/user/${userDetails?.username}`}>
+                  <Avatar
+                    size="sm"
+                    name={userDetails?.username}
+                    src={userDetails?.avatar}
+                  />
+                </Link>
+                <Text fontWeight={600} color="white">{userDetails?.username}</Text>
+              </HStack>
             ) : (
               <Button bgColor={"red.400"} color="black">
                 <Link to={"/signup"}>Register</Link>

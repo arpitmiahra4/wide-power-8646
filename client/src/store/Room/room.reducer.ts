@@ -1,13 +1,13 @@
-import { RoomType } from "../../constants/constants";
+import { RoomStateType, RoomType } from "../../constants/constants";
 import { GET_ROOM_ERROR, GET_ROOM_LOADING, GET_ROOM_SUCCESS, RESET_ROOM } from "./room.actionTypes";
 
-const initRoomState : {data : RoomType|null,loading : boolean, error : boolean}= {
-    data : null,
+const initRoomState : {data : RoomType,loading : boolean, error : boolean}= {
+    data : {},
     loading : false,
     error : false
 } 
 
-export const roomReducer = (state : {data : RoomType | null,loading : boolean, error : boolean}=initRoomState,{type ,payload} : any)=>{
+export const roomReducer = (state : RoomStateType = initRoomState,{type ,payload} : any)=>{
     switch(type){
         case GET_ROOM_LOADING : {
             return {

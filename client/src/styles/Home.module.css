@@ -1,7 +1,8 @@
 .Main_box{
-    box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
-    height: 90vh;
-    background: #1f2122;
+    min-height:90vh;
+    background-image : url("../assets/HomeBackground.jpg");
+    background-position:inherit;
+    background-size:cover;
 }
 .main_flex{
     justify-content: center;
